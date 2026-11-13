@@ -1,0 +1,69 @@
+diff --git a/build/three.cjs b/build/three.cjs
+index ca4833532c363b72477b2e8a6f47cc0e2fc7b09a..6be84ecc2fced78cc852036c8ddd73cdc2cd7b26 100644
+--- a/build/three.cjs
++++ b/build/three.cjs
+@@ -43463,7 +43463,17 @@ class LoadingManager {
+ 		 *
+ 		 * @type {AbortController}
+ 		 */
+-		this.abortController = new AbortController();
++		let abortController;
++
++		Object.defineProperty( this, 'abortController', {
++
++			get() {
++
++				return abortController || ( abortController = new AbortController() );
++
++			}
++
++		} );
+ 
+ 		/**
+ 		 * This should be called by any loader using the manager when the loader
+diff --git a/build/three.core.js b/build/three.core.js
+index 7dcd0fbcbc04b8d9a20ecb96c1ce344cb55150d5..8453e47b75e46f815b53dccaefc8bed483e6c36b 100644
+--- a/build/three.core.js
++++ b/build/three.core.js
+@@ -43461,7 +43461,17 @@ class LoadingManager {
+ 		 *
+ 		 * @type {AbortController}
+ 		 */
+-		this.abortController = new AbortController();
++		let abortController;
++
++		Object.defineProperty( this, 'abortController', {
++
++			get() {
++
++				return abortController || ( abortController = new AbortController() );
++
++			}
++
++		} );
+ 
+ 		/**
+ 		 * This should be called by any loader using the manager when the loader
+diff --git a/src/loaders/LoadingManager.js b/src/loaders/LoadingManager.js
+index 69339f44ff2ed0faa0b1d998e757adad7216b9fc..a16143f4cfaf242753eb97bfc2a092f7cfd4302a 100644
+--- a/src/loaders/LoadingManager.js
++++ b/src/loaders/LoadingManager.js
+@@ -74,7 +74,17 @@ class LoadingManager {
+ 		 *
+ 		 * @type {AbortController}
+ 		 */
+-		this.abortController = new AbortController();
++		let abortController;
++
++		Object.defineProperty( this, 'abortController', {
++
++			get() {
++
++				return abortController || ( abortController = new AbortController() );
++
++			}
++
++		} );
+ 
+ 		/**
+ 		 * This should be called by any loader using the manager when the loader
